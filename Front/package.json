@@ -1,0 +1,32 @@
+{
+  "name": "riotjs-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "<project_name>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "lite-server": "^2.2.0",
+    "node-sass": "^4.0.0",
+    "riot": "^3.0.1",
+    "riot-route": "^3.1.1",
+    "riot-tag-loader": "^1.0.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "webpack": "webpack -w",
+    "lite": "lite-server",
+    "start": "concurrently \"npm run lite\" \"npm run webpack\""
+  }
+}

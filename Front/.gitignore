@@ -1,0 +1,4 @@
+.node-version
+node_modules/
+app/scripts
+app/styles
