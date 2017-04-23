@@ -1,5 +1,6 @@
 require('../tags/list.tag')
 <app>
+    <a href="fruit">aa</a>
     <list each={ opts.columns }></list>
     <list-new></list-new>
 </app>

@@ -1,3 +1,4 @@
+require('../scripts/router.js')
 require('../tags/app.tag')
 
 riot.mount('app', {
