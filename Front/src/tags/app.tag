@@ -1,8 +1,10 @@
 require('../tags/list.tag')
 <app>
-    <a href="fruit">aa</a>
+    <div class="row">
+    <a href="fruit" id="findMe">aa</a>
     <list each={ opts.columns }></list>
     <list-new></list-new>
+    </div>
 </app>
 
 <list-new>
@@ -33,5 +35,10 @@ require('../tags/list.tag')
             }
             e.preventDefault()
         }
+
+        this.on('mount', function(){
+            $('p', this.root)
+            this.root.querySelectorAll('p')
+        })
     </script>
 </list-new>
