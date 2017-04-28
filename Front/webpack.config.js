@@ -25,17 +25,6 @@ module.exports = [{
                 options: {
                     presets: ['es2015-riot']
                 }
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(eot|svg|png|ttf|woff|woff2)$/,
-                loader: 'file-loader?name=semantic/dist/themes/default/assets/fonts/[name].[ext]'
             }
         ]
     },
@@ -59,7 +48,8 @@ module.exports = [{
 }, {
     entry: {
         app: './src/styles/app.sass',
-        list: './src/styles/list.sass'
+        list: './src/styles/list.sass',
+        normalise: './node_modules/normalize.css/normalize.css'
     },
     output: {
         path: __dirname + '/app/styles',
@@ -74,6 +64,15 @@ module.exports = [{
                     use: [
                         "css-loader?minimize",
                         "sass-loader"
+                    ]
+                })
+            },
+            {
+                test: /\.css$/,
+                use: extractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader?minimize"
                     ]
                 })
             }

@@ -1,23 +1,25 @@
 <list>
-    <h3>{ title }</h3>
+    <div class="pure-u-1">
+        <h3>{ title }</h3>
 
-    <ul>
-        <li each={ items.filter(whatShow) }>
-            <label class={ completed: done }>
-                <input type="checkbox" checked={ done } onclick={ parent.toggle }>
-                { title }{ dateCheck(date)}
-            </label>
-        </li>
-    </ul>
+        <ul>
+            <li each={ items.filter(whatShow) }>
+                <label class={ completed: done }>
+                    <input type="checkbox" checked={ done } onclick={ parent.toggle }>
+                    { title }{ dateCheck(date)}
+                </label>
+            </li>
+        </ul>
 
-    <form onsubmit={ add }>
-        <input ref="input" onkeyup={ edit }>
-        <button disabled={ !text }>Add</button>
+        <form class="pure-form" onsubmit={ add }>
+            <input ref="input" onkeyup={ edit }>
+            <button disabled={ !text } class="pure-button pure-button-primary">Add</button>
 
-        <button type="button" disabled={ items.filter(onlyDone).length== 0 } onclick={ removeAllDone }>
-            X{ items.filter(onlyDone).length }
-        </button>
-    </form>
+            <button type="button" disabled={ items.filter(onlyDone).length== 0 } onclick={ removeAllDone } class="pure-button">
+                X{ items.filter(onlyDone).length }
+            </button>
+        </form>
+    </div>
 
     <script>
 
@@ -50,9 +52,10 @@
             return !item.hidden
         }
 
-        dateCheck(date){
-            if(date){
-                return ", "+date.toDateString()
+        dateCheck(date)
+        {
+            if (date) {
+                return ", " + date.toDateString()
             }
         }
 

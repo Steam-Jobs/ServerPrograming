@@ -3,18 +3,19 @@ require('../tags/header.tag')
 
 <app>
     <header title="This is Header."></header>
-
-    <a href="fruit" id="findMe">aa</a>
-    <list each={ opts.columns }></list>
-    <list-new></list-new>
+    <div class="pure-g">
+        <list each={ opts.columns }></list>
+        <list-new></list-new>
+    </div>
 </app>
 
 <list-new>
-    <form onsubmit={ add }>
-        <input ref="input" onkeyup={ edit }>
-        <button disabled={ !text }>えいっ（適当）</button>
-    </form>
-
+    <div class="pure-u-1-2">
+        <form onsubmit={ add }>
+            <input ref="input" onkeyup={ edit }>
+            <button disabled={ !text }>えいっ（適当）</button>
+        </form>
+    </div>
     <script>
         this.columns = opts.columns
         edit(e)

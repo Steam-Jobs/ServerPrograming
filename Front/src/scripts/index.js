@@ -1,9 +1,6 @@
 import '../tags/app.tag'
 import '../scripts/router.js'
 
-import '../../semantic/dist/semantic.css'
-import '../../semantic/dist/semantic.js'
-
 riot.mount('app', {
     columns: [{
             title: 'TODO1',
