@@ -1,9 +1,7 @@
 import route from 'riot-route'
 
-route('/', function(name) {
-    console.log('The list of fruits')
+route('/',function(name){
+    console.log('あ')
 })
 
-route('/fruit', function(name) {
-    console.log('The list of fruits')
-})
+route.start()

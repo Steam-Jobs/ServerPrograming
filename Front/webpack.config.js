@@ -3,7 +3,7 @@ var extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = [{
     entry: {
-        index :'./src/scripts/index.js'
+        index: './src/scripts/index.js'
     },
     output: {
         path: __dirname + '/app/scripts',
@@ -25,6 +25,17 @@ module.exports = [{
                 options: {
                     presets: ['es2015-riot']
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(eot|svg|png|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=semantic/dist/themes/default/assets/fonts/[name].[ext]'
             }
         ]
     },
@@ -33,15 +44,19 @@ module.exports = [{
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
+            // jsを圧縮するぅ🙌
             compress: {
                 warnings: false
             }
         }),
         new webpack.ProvidePlugin({
-            riot: 'riot'
+            // 指定した変数を他のモジュール内で使用できるようにする
+            riot: 'riot',
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ]
-},{
+}, {
     entry: {
         app: './src/styles/app.sass',
         list: './src/styles/list.sass'
@@ -56,7 +71,7 @@ module.exports = [{
                 test: /\.sass$/,
                 use: extractTextPlugin.extract({
                     fallback: "style-loader",
-                    use:[
+                    use: [
                         "css-loader?minimize",
                         "sass-loader"
                     ]

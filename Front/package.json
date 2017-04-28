@@ -23,7 +23,10 @@
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "semantic-ui": "^2.2.10"
+  },
   "scripts": {
     "webpack": "webpack -w",
     "lite": "lite-server",

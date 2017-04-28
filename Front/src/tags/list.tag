@@ -1,5 +1,4 @@
 <list>
-   <div class="columns medium-3">
     <h3>{ title }</h3>
 
     <ul>
@@ -19,7 +18,6 @@
             X{ items.filter(onlyDone).length }
         </button>
     </form>
-   </div>
 
     <script>
 
