@@ -2,11 +2,19 @@ require('../tags/list.tag')
 require('../tags/header.tag')
 
 <app>
-    <header title="This is Header."></header>
-    <div class="pure-g">
-        <list each={ opts.columns }></list>
-        <list-new></list-new>
+    <div class="surface">
+        <header title="This is Header."></header>
+        <div>
+            <list each={ opts.columns }></list>
+            <list-new></list-new>
+        </div>
     </div>
+    <script>
+        this.on('mount', function () {
+            console.log(
+                this.root.querySelector('body'))
+        })
+    </script>
 </app>
 
 <list-new>

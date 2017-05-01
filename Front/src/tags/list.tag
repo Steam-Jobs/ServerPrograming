@@ -1,5 +1,5 @@
 <list>
-    <div class="pure-u-1">
+    <div class="list">
         <h3>{ title }</h3>
 
         <ul>
@@ -15,7 +15,8 @@
             <input ref="input" onkeyup={ edit }>
             <button disabled={ !text } class="pure-button pure-button-primary">Add</button>
 
-            <button type="button" disabled={ items.filter(onlyDone).length== 0 } onclick={ removeAllDone } class="pure-button">
+            <button type="button" disabled={ items.filter(onlyDone).length== 0 } onclick={ removeAllDone }
+                    class="pure-button">
                 X{ items.filter(onlyDone).length }
             </button>
         </form>
@@ -74,4 +75,6 @@
     </script>
 
     <style>
+
+    </style>
 </list>

@@ -47,7 +47,7 @@ module.exports = [{
     ]
 }, {
     entry: {
-        app: './src/styles/app.sass',
+        app: './src/styles/app.less',
         colors: './src/styles/colors.less',
         normalize: './node_modules/normalize.css/normalize.css'
     },
