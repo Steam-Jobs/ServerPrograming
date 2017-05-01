@@ -48,8 +48,8 @@ module.exports = [{
 }, {
     entry: {
         app: './src/styles/app.sass',
-        list: './src/styles/list.sass',
-        normalise: './node_modules/normalize.css/normalize.css'
+        colors: './src/styles/colors.less',
+        normalize: './node_modules/normalize.css/normalize.css'
     },
     output: {
         path: __dirname + '/app/styles',
@@ -64,6 +64,16 @@ module.exports = [{
                     use: [
                         "css-loader?minimize",
                         "sass-loader"
+                    ]
+                })
+            },
+            {
+                test: /\.less$/,
+                use: extractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        "css-loader?minimize",
+                        "less-loader"
                     ]
                 })
             },
