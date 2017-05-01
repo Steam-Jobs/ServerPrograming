@@ -4,28 +4,46 @@ require('../tags/header.tag')
 <app>
     <div class="surface">
         <header title="This is Header."></header>
-        <div>
+        <div class="main-contents">
             <list each={ opts.columns }></list>
             <list-new></list-new>
         </div>
     </div>
     <script>
         this.on('mount', function () {
-            console.log(
-                this.root.querySelector('body'))
         })
     </script>
+    <style type='less'>
+        app {
+            display: block;
+            position: relative;
+            height: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .main-contents{
+            height: 100%;
+        }
+        .surface{
+            height: 100%;
+        }
+        .main-contents{
+            position: relative;
+        }
+    </style>
 </app>
 
 <list-new>
     <div class="pure-u-1-2">
         <form onsubmit={ add }>
             <input ref="input" onkeyup={ edit }>
-            <button disabled={ !text }>えいっ（適当）</button>
+            <button>えいっ（適当）</button>
         </form>
     </div>
     <script>
-        this.columns = opts.columns
+
         edit(e)
         {
             this.text = e.target.value
@@ -34,7 +52,7 @@ require('../tags/header.tag')
         add(e)
         {
             if (this.text) {
-                this.columns.push({
+                opts.columns.push({
                     title: this.text,
                     items: [
                         {title: 'Todo 1', date: new Date()},
