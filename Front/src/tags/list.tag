@@ -71,6 +71,7 @@ require('../tags/task.tag')
         @import "../styles/font-awesome/font-awesome.less";
 
         list {
+            height:100%;
             width: 270px;
             display: inline-block;
             vertical-align: top;
@@ -79,10 +80,7 @@ require('../tags/task.tag')
             // background: rgba(0, 0, 0, 0.6);
             border-radius: 7px;
             border: 1px solid rgba(0, 0, 0, 0.5);
-
-            box-shadow:0px 0px 7px -1px rgba(0,0,0,0.5);
-            -moz-box-shadow:0px 0px 7px -1px rgba(0,0,0,0.5);
-            -webkit-box-shadow:0px 0px 7px -1px rgba(0,0,0,0.5);
+            box-shadow:0 0 7px -1px rgba(0,0,0,0.5);
 
         }
         .list-header {
@@ -94,6 +92,7 @@ require('../tags/task.tag')
         }
         .list-tasks{
             padding: 0 8px;
+            overflow-x: hidden;
         }
         .list-bottom{
             padding: 0 8px;

@@ -5,8 +5,11 @@ require('../tags/header.tag')
     <div class="surface">
         <header title="This is Header."></header>
         <div class="main-contents">
-            <list each={ opts.columns }></list>
-            <list-new></list-new>
+            <div class="lists">
+                <list each={ opts.columns }></list>
+                <list-new></list-new>
+            </div>
+            <div class="sidemenu"></div>
         </div>
     </div>
     <script>
@@ -24,13 +27,13 @@ require('../tags/header.tag')
             white-space: nowrap;
         }
         .main-contents{
-            height: 100%;
+            margin-bottom:10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            position:absolute;
         }
         .surface{
             height: 100%;
-        }
-        .main-contents{
-            position: relative;
         }
     </style>
 </app>
