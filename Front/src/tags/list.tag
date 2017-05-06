@@ -25,7 +25,7 @@ require('../tags/task.tag')
         add(e)
         {
             if (this.text) {
-                this.items.push({title: this.text})
+                this.items.push({title: this.text,progress: 0,comment:"コメント"})
                 this.text = this.refs.input.value = ''
             }
             e.preventDefault()
@@ -71,13 +71,12 @@ require('../tags/task.tag')
         @import "../styles/font-awesome/font-awesome.less";
 
         list {
-            height:100%;
             width: 270px;
             display: inline-block;
             vertical-align: top;
             padding: 0;
             margin: 10px 5px 0;
-            // background: rgba(0, 0, 0, 0.6);
+            background: rgba(2, 106, 167, 0.12);
             border-radius: 7px;
             border: 1px solid rgba(0, 0, 0, 0.5);
             box-shadow:0 0 7px -1px rgba(0,0,0,0.5);

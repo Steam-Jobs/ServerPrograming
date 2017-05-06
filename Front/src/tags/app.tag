@@ -27,10 +27,20 @@ require('../tags/header.tag')
             white-space: nowrap;
         }
         .main-contents{
-            margin-bottom:10px;
+            height: 100%;
+            position: relative;
+            padding-bottom:10px;
             overflow-x: auto;
             overflow-y: hidden;
-            position:absolute;
+            .lists{
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin-bottom:10px;
+                padding-bottom:10px;
+            }
         }
         .surface{
             height: 100%;
