@@ -1,5 +1,6 @@
 require('../tags/list.tag')
 require('../tags/header.tag')
+require('../tags/window.tag')
 
 <app>
     <div class="surface">
@@ -12,6 +13,7 @@ require('../tags/header.tag')
             <div class="sidemenu"></div>
         </div>
     </div>
+    <window></window>
     <script>
         this.on('mount', function () {
         })

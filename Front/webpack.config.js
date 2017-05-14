@@ -41,6 +41,7 @@ module.exports = [{
         new webpack.ProvidePlugin({
             // 指定した変数を他のモジュール内で使用できるようにする
             riot: 'riot',
+            route: ['riot-route','default'],
             $: 'jquery',
             jQuery: 'jquery'
         })
