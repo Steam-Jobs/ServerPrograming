@@ -1,10 +1,20 @@
 <detailTask>
     <div class="window">
         <div class="window-header">
-            <a href="/">xxxxxxxxxxxxxx閉じるxxxxxxxxxxxxxxxxx<i class="fa fa-fw fa-times " aria-hidden="true"></i></a>
+            <a href="/"><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="window-detail">
+            { opts.task.title }
+            { opts.task.progress }%
+            { opts.task.comment }
         </div>
 
     </div>
+
+    <script>
+        console.log(this)
+    </script>
+
     <style type="less">
         .window {
             width: 500px;

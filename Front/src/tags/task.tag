@@ -15,10 +15,6 @@
     </div>
 
         <script>
-            var that=this
-            this.on('mount', function () {
-
-            })
 
         </script>
 

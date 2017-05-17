@@ -2,8 +2,10 @@ require('../tags/detailTask.tag')
 
 <window>
     <div class="overlay" if={ current !=　"" }>
-        <detailTask if={ current == "detailTask" }></detailTask>
-        <detailList if={ current == "detailList" }></detailList>
+        <a href="/">
+            <detailTask if={ current == "detailTask" } task={ task }></detailTask>
+            <detailList if={ current == "detailList" }></detailList>
+        </a>
     </div>
     <script>
         var that = this
@@ -16,8 +18,9 @@ require('../tags/detailTask.tag')
                     that.current = ""
                     that.update()
                 })
-                this.obs.on('taskClicked',function(id){
+                this.obs.on('taskClicked',function(task){
                     that.current = "detailTask"
+                    that.task = task
                     that.update()
                 })
             }
@@ -27,12 +30,16 @@ require('../tags/detailTask.tag')
     </script>
 
     <style type="less">
+        @import "../styles/font-awesome/font-awesome.less";
         .overlay{
             height: 100%;
             width: 100%;
             position: fixed;
             top: 0;
             left: 0;
+            a{
+                cursor: default;
+            }
         }
     </style>
 </window>

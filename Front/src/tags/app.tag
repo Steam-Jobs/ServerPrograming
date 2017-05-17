@@ -16,15 +16,27 @@ require('../tags/window.tag')
     <window></window>
     <script>
         var that = this
+        var window
+        this.on('mount',function () {
+            window = that.mixin("window")
+        })
+
         route.base("/");
 
         route('t/*', function(id) {
-            var window = that.mixin("window")
-            window.obs.trigger("taskClicked",id)
+            var tas
+            opts.columns.filter(function(list, index){
+                 if(list.items.filter(function(task,index){
+                    if(task.id == id) {
+                        tas = task
+                        return true
+                    }}))
+                    return true
+            })
+            window.obs.trigger("taskClicked",tas)
         })
 
         route('', function(){
-            var window = that.mixin("window")
             window.obs.trigger("hidden")
         })
 
