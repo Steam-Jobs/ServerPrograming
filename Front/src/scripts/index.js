@@ -1,5 +1,4 @@
 import '../tags/app.tag'
-//import '../scripts/router.js'
 riot.mount('app', {
     columns: [{
         title: 'リスト1',

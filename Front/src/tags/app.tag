@@ -15,8 +15,20 @@ require('../tags/window.tag')
     </div>
     <window></window>
     <script>
-        this.on('mount', function () {
+        var that = this
+        route.base("/");
+
+        route('t/*', function(id) {
+            var window = that.mixin("window")
+            window.obs.trigger("taskClicked",id)
         })
+
+        route('', function(){
+            var window = that.mixin("window")
+            window.obs.trigger("hidden")
+        })
+
+        route.start(true)
     </script>
     <style type='less'>
         app {
