@@ -16,42 +16,6 @@
 
         <script>
 
-            detailTask(){
-                console.log(this.id)
-            }
-            dateCheck(date)
-            {
-                if (date) {
-                    return ", " + date.toDateString()
-                }
-            }
-
-            route.base("/");
-            route('t/*', function(id) {
-                /*riot.mount('app', {
-                    columns: [{
-                        title: 'リスト1',
-                        items: [
-                            {id: 1, title: 'タスク 1', progress: 50, date: new Date()},
-                            {id: 2, title: 'タスク 2', progress: 25, comment: "コメント1"},
-                            {id: 3, title: 'タスク 3', progress: 10, comment: "コメント2"},
-                            {id: 4, title: 'タスク 3', progress: 10, comment: "コメント2"},
-                        ]
-                    },
-                        {
-                            title: 'リスト2',
-                            items: [
-                                {id: 5, title: 'タスク2 1', progress: 70, date: new Date()},
-                                {id: 6, title: 'タスク2 2', progress: 20, comment: "コメント3"},
-                                {id: 7, title: 'タスク2 3', progress: 5, comment: "コメント4"}
-                            ]
-                        }
-                    ]})
-                riot.update();*/
-                riot.mixin('window').setCurrent("detailTask")
-            });
-            route.start(true);
-
         </script>
 
         <style type='less'>

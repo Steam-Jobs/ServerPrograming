@@ -15,8 +15,32 @@ require('../tags/window.tag')
     </div>
     <window></window>
     <script>
-        this.on('mount', function () {
+        var that = this
+        var window
+        this.on('mount',function () {
+            window = that.mixin("window")
         })
+
+        route.base("/");
+
+        route('t/*', function(id) {
+            var tas
+            opts.columns.filter(function(list, index){
+                 if(list.items.filter(function(task,index){
+                    if(task.id == id) {
+                        tas = task
+                        return true
+                    }}))
+                    return true
+            })
+            window.obs.trigger("taskClicked",tas)
+        })
+
+        route('', function(){
+            window.obs.trigger("hidden")
+        })
+
+        route.start(true)
     </script>
     <style type='less'>
         app {
