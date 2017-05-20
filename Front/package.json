@@ -33,5 +33,6 @@
     "webpack": "webpack -w",
     "lite": "lite-server",
     "start": "concurrently \"npm run lite\" \"npm run webpack\""
+    "build": "webpack"
   }
 }
