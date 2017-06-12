@@ -4,8 +4,8 @@
             <a href="/"><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></a>
         </div>
         <div class="window-detail">
-            { opts.task.title }
-            { opts.task.progress }%
+            { opts.task.taskName }
+            { opts.task.progressNumerator }%
             { opts.task.comment }
         </div>
 

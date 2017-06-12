@@ -1,12 +1,12 @@
 <task>
     <div class="task">
-        <a href="/t/{id}">
+        <a href="/t/{ taskID }">
             <div class="task-name">
-                { title }
+                { taskName }
             </div>
             <div class="task-progress">
-                <meter value="{ progress }" min="0" max="100"></meter>
-                <span>{ progress }%</span>
+                <meter value="{ progressNumerator }" min="0" max="100"></meter>
+                <span>{ progressNumerator }%</span>
             </div>
             <div class="task-comment">
                 { comment }

@@ -1,48 +1,60 @@
-require('../tags/list.tag')
 require('../tags/header.tag')
 require('../tags/window.tag')
+require('../tags/main-contents.tag')
 
 <app>
     <div class="surface">
-        <header title="This is Header."></header>
-        <div class="main-contents">
-            <div class="lists">
-                <list each={ opts.columns }></list>
-                <list-new></list-new>
-            </div>
-            <div class="sidemenu"></div>
-        </div>
+        <header></header>
+        <main-contents></main-contents>
     </div>
     <window></window>
+
     <script>
         var that = this
+
+        // window(オーバーレイウィンドウ)を制御する変数
         var window
         this.on('mount',function () {
+            // mixinからwindowを取得
             window = that.mixin("window")
         })
 
+        // ここからルーター（URLに応じてwindowを制御）
         route.base("/");
-
         route('t/*', function(id) {
             var tas
-            opts.columns.filter(function(list, index){
-                 if(list.items.filter(function(task,index){
-                    if(task.id == id) {
+            that.data.lists.filter(function(list, index){
+                 if(list.tasks.filter(function(task,index){
+                    if(task.taskID == id) {
                         tas = task
                         return true
                     }}))
                     return true
             })
-            window.obs.trigger("taskClicked",tas)
+            window.obs.trigger("showTask",tas)
+        })
+
+        route('list/add', function(){
+            window.obs.trigger("showMessage","リスト追加がめーん")
+        })
+
+        route('list/*/*', function(id,cmd){
+            window.obs.trigger("showMessage","id = "+id+"  cmd = "+cmd)
+        })
+
+        route('list/*', function(id){
+            console.log(id)
         })
 
         route('', function(){
-            window.obs.trigger("hidden")
+            window.obs.trigger("hiddenWindow")
         })
 
         route.start(true)
     </script>
+
     <style type='less'>
+        @import "../styles/font-awesome/font-awesome.less";
         app {
             display: block;
             position: relative;
@@ -52,58 +64,8 @@ require('../tags/window.tag')
             width: 100%;
             white-space: nowrap;
         }
-        .main-contents{
-            height: 100%;
-            position: relative;
-            padding-bottom:10px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            .lists{
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                margin-bottom:10px;
-                padding-bottom:10px;
-            }
-        }
         .surface{
             height: 100%;
         }
     </style>
 </app>
-
-<list-new>
-    <div class="pure-u-1-2">
-        <form onsubmit={ add }>
-            <input ref="input" onkeyup={ edit }>
-            <button>えいっ（適当）</button>
-        </form>
-    </div>
-    <script>
-
-        edit(e)
-        {
-            this.text = e.target.value
-        }
-
-        add(e)
-        {
-            if (this.text) {
-                opts.columns.push({
-                    title: this.text,
-                    items: [
-                        {title: 'Todo 1', date: new Date()},
-                        {title: 'Todo 2'},
-                        {title: 'Todo 3'}
-                    ]
-                })
-                this.text = this.refs.input.value = ''
-            }
-            e.preventDefault()
-        }
-
-    </script>
-
-</list-new>

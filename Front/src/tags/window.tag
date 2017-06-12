@@ -1,10 +1,15 @@
-require('../tags/detailTask.tag')
+require('../tags/windows/detailTask.tag')
+require('../tags/windows/message.tag')
+require('../tags/login.tag')
+
 
 <window>
-    <div class="overlay" if={ current !=　"" }>
+    <div class="overlay" if={ current != "" }>
         <a href="/">
             <detailTask if={ current == "detailTask" } task={ task }></detailTask>
-            <detailList if={ current == "detailList" }></detailList>
+            <detailList if={ current == "detailList" } list={ list }></detailList>
+            <message if={ current == "message" } message={ message }></message>
+            <login if={ current == "login" }></login>
         </a>
     </div>
     <script>
@@ -14,13 +19,23 @@ require('../tags/detailTask.tag')
         var OptsMixin = {
             obs: riot.observable(),
             init:function(){
-                this.obs.on('hidden',function(){
+                this.obs.on('hiddenWindow',function(){
                     that.current = ""
                     that.update()
                 })
-                this.obs.on('taskClicked',function(task){
+                this.obs.on('showTask',function(task){
                     that.current = "detailTask"
                     that.task = task
+                    that.update()
+                })
+                this.obs.on('showList',function(list){
+                    that.current = "detailTask"
+                    that.list = list
+                    that.update()
+                })
+                this.obs.on('showMessage',function(message){
+                    that.current = "message"
+                    that.message = message
                     that.update()
                 })
             }

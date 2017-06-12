@@ -7,8 +7,6 @@ auth.trigger('login', json)
 })
 }
 
-
-<!-- login view -->
 <login>
     <form onsubmit="{ login }">
         <input ref="username" type="text" placeholder="username">
