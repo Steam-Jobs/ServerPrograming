@@ -1,7 +1,7 @@
 <message>
     <div class="window">
         <div class="window-header">
-            <a href="/"><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></a>
+            <span onclick={ closeWindow }><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></span>
         </div>
         <div class="window-detail">
             <p>{ opts.message }</p>
@@ -10,7 +10,18 @@
     </div>
 
     <script>
-        console.log(this)
+        var that = this
+
+        // window(オーバーレイウィンドウ)を制御する変数
+        var window
+        this.on('mount',function () {
+            // mixinからwindowを取得
+            window = that.mixin("window")
+        })
+
+        closeWindow(){
+            window.obs.trigger("hiddenWindow")
+        }
     </script>
 
     <style type="less">

@@ -4,21 +4,23 @@ require('../tags/login.tag')
 
 
 <window>
-    <div class="overlay" if={ current != "" }>
-        <a href="/">
+    <div class="overlay" if={ current != "" } onclick="{ closeWindow }">
             <detailTask if={ current == "detailTask" } task={ task }></detailTask>
             <detailList if={ current == "detailList" } list={ list }></detailList>
             <message if={ current == "message" } message={ message }></message>
             <login if={ current == "login" }></login>
-        </a>
     </div>
     <script>
         var that = this
+
+        // 表示するwindowを決定する変数
         this.current = ""
 
+        // 他ファイルからコントロールするためのオブジェクトを定義
         var OptsMixin = {
             obs: riot.observable(),
             init:function(){
+                // トリガーが発火した時の処理
                 this.obs.on('hiddenWindow',function(){
                     that.current = ""
                     that.update()
@@ -40,7 +42,12 @@ require('../tags/login.tag')
                 })
             }
         }
+        // オブジェクトを共有部分に登録
         riot.mixin("window",OptsMixin)
+
+        closeWindow(){
+            route("/")
+        }
 
     </script>
 

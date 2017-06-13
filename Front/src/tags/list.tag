@@ -4,8 +4,8 @@ require('../tags/task.tag')
     <div class="list-header">
         <h2>{ listName }</h2>
         <span class="right">
-            <span class="list-button"><a href="/list/{ listID }"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></a></span>
-            <span class="list-button"><a href="/list/{ listID }/config"><i class="fa fa-fw fa-cog" aria-hidden="true"></i></a></span>
+            <span class="list-button" onclick="{ addTask }"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
+            <span class="list-button" onclick="{ detailList }"><i class="fa fa-fw fa-cog" aria-hidden="true"></i></span>
         </span>
     </div>
     <div class="list-tasks">
@@ -31,34 +31,10 @@ require('../tags/task.tag')
                 this.items.push({title: this.text, progress: 0, comment: "コメント"})
                 this.text = this.refs.input.value = ''
             }
-            e.preventDefault()
         }
 
-        removeItem(e)
-        {
-            console.log(e)
-            e.target.parent
-        }
-
-        removeAllDone(e)
-        {
-            this.items = this.items.filter(function (item) {
-                return !item.done
-            })
-        }
-
-
-        onlyDone(item)
-        {
-            return item.done
-        }
-
-        toggle(e)
-        {
-            var item = e.item
-            item.done = !item.done
-            return true
-        }
+        addTask(){ route("/list/"+this.listID+"/addtask") }
+        detailList(){ route("/list/"+this.listID+"/addtask") }
 
     </script>
 

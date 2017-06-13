@@ -1,21 +1,19 @@
 <task>
-    <div class="task">
-        <a href="/t/{ taskID }">
-            <div class="task-name">
-                { taskName }
-            </div>
-            <div class="task-progress">
-                <meter value="{ progressNumerator }" min="0" max="100"></meter>
-                <span>{ progressNumerator }%</span>
-            </div>
-            <div class="task-comment">
-                { comment }
-            </div>
-        </a>
+    <div class="task" onclick="{ detailTask }">
+        <div class="task-name">
+            { taskName }
+        </div>
+        <div class="task-progress">
+            <meter value="{ progressNumerator }" min="0" max="100"></meter>
+            <span>{ progressNumerator }%</span>
+        </div>
+        <div class="task-comment">
+            { comment }
+        </div>
     </div>
 
         <script>
-
+            detailTask(){ route("/t/"+this.taskID) }
         </script>
 
         <style type='less'>

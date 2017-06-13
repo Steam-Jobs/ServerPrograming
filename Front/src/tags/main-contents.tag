@@ -1,15 +1,20 @@
 require('../tags/list.tag')
 
 <main-contents>
-    <div class="main-contents">
+    <div class="main-panel">
         <div class="lists">
             <list each={ data.lists }></list>
-            <list-new></list-new>
+            <list-new><span class="list-button" onclick="{ addList }"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span></list-new>
         </div>
         <div class="sidemenu"></div>
     </div>
+    <script>
+
+        addList(){ route("/list/addtask") }
+
+    </script>
     <style type="less">
-        .main-contents{
+        .main-panel{
             height: 100%;
             position: relative;
             padding-bottom:10px;
@@ -25,32 +30,25 @@ require('../tags/list.tag')
             padding-bottom:10px;
         }
         }
-    </style>
-</main-contents>
-
-<list-new>
-    <span class="list-button"><a href="/list/add"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></a></span>
-    <style type="less">
         list-new {
             display: inline-block;
             vertical-align: top;
             padding: 0;
             margin: 10px 5px 0;
-            padding: 5px 10px;
+            padding: 5px 0;
         }
 
         .list-button{
             border-radius:3px;
             background:rgba(0,0,0,.0);
             font-size:21px;
-            &:hover{
-                 background:rgba(0,0,0,.3);
-             }
-            a{
-                color: #e0e0e0;
-            }
+            color: #e0e0e0;
+        &:hover{
+             background:rgba(0,0,0,.3);
+         }
+        a{
+            color: #e0e0e0;
         }
-
+        }
     </style>
-
-</list-new>
+</main-contents>

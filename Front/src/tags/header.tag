@@ -8,12 +8,18 @@
             <a href="#" class="pure-menu-heading header-title">タスク管理しすてむ🙌🙌🙌</a>
         </div>
         <div class="pure-u-1-3">
-            <a href="#" class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-bell-o" aria-hidden="true"></i></a>
-            <a href="#" class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-info" aria-hidden="true"></i></a>
-            <a href="#" class="pure-menu-heading header-right header-button">ゆーざーめい</a>
-            <a href="#" class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></a>
+            <span onclick="" class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-bell-o" aria-hidden="true"></i></span>
+            <span onclick={ showInfo } class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-info" aria-hidden="true"></i></span>
+            <span onclick="" class="pure-menu-heading header-right header-button"><img src="http://gravatar.com/avatar/{ data.gravatar }?s=14">{ data.userName }</span>
+            <span onclick="" class="pure-menu-heading header-right header-button"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
         </div>
     </div>
+
+    <script>
+
+        showInfo(){ route("info") }
+
+    </script>
 
     <style type='less'>
         @import "../styles/colors";
@@ -22,7 +28,9 @@
         .header {
             background-color: @blue;
             padding: 5px 0;
-
+            span{
+                padding: .5em;
+            }
             .header-left{
                 float:left;
                 margin-left:5px;
@@ -40,12 +48,10 @@
                 &:hover{
                    color: rgba(255,255,255,.85);
                 }
-                .header-item;
             }
             .header-right {
                 float: right;
                 margin-right:5px;
-                .header-item;
             }
         }
         .header-item{

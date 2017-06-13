@@ -21,6 +21,8 @@ require('../tags/main-contents.tag')
 
         // ここからルーター（URLに応じてwindowを制御）
         route.base("/");
+
+        // タスク詳細
         route('t/*', function(id) {
             var tas
             that.data.lists.filter(function(list, index){
@@ -34,18 +36,27 @@ require('../tags/main-contents.tag')
             window.obs.trigger("showTask",tas)
         })
 
+        // リスト追加画面
         route('list/add', function(){
             window.obs.trigger("showMessage","リスト追加がめーん")
         })
 
-        route('list/*/*', function(id,cmd){
-            window.obs.trigger("showMessage","id = "+id+"  cmd = "+cmd)
+        // リストにタスク追加
+        route('list/*/addtask', function(id){
+            window.obs.trigger("showMessage","task追加がめん (id = "+id)
         })
 
+        // リスト詳細
         route('list/*', function(id){
-            console.log(id)
+            window.obs.trigger("showMessage","list詳細がめーん (id = "+id)
         })
 
+        // リスト詳細
+        route('info', function(){
+            window.obs.trigger("showMessage","タスク管理システム by Steamjobs")
+        })
+
+        // ホーム画面
         route('', function(){
             window.obs.trigger("hiddenWindow")
         })

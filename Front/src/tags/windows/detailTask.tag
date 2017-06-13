@@ -12,7 +12,6 @@
     </div>
 
     <script>
-        console.log(this)
     </script>
 
     <style type="less">

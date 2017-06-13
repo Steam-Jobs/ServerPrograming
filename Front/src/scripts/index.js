@@ -1,8 +1,10 @@
 import '../tags/app.tag'
+import '../tags/app.tag'
 var data = {
     data: {
         userID: '1',
-        userName: 'ゆーざーめい',
+        userName: 'ゆーざーの名前',
+        gravatar:'d07edfba8c14b0c50d041c7a9ef31528',
         lists: [
             {
                 listID: '1',
@@ -16,7 +18,7 @@ var data = {
                 ]
             },
             {
-                listID: '1',
+                listID: '2',
                 listName: 'リスト2',
                 listColor: '#114514',
                 tasks: [
@@ -27,7 +29,7 @@ var data = {
                 ]
             },
             {
-                listID: '1',
+                listID: '3',
                 listName: 'リスト3',
                 listColor: '#114514',
                 tasks: [
