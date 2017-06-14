@@ -1,6 +1,5 @@
 # Front
-フロントエンドのソースです<br>
-Riot.js+sass+webpack<br>
+Riot.jsとlessで書いたソースをwebpackでindex.jsにばーん<br>
 ## 初期設定
 [node.js](https://nodejs.org/ja/)をインストール後<br>
 Frontのルートで
@@ -11,4 +10,4 @@ Frontのルートで
 Frontのルートで
 >npm start
 
-でサーバー起動＋ファイル監視
+でサーバー起動＋ファイル監視で自動トランスパイル
