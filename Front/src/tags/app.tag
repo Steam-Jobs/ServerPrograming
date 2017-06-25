@@ -48,12 +48,25 @@ require('../tags/main-contents.tag')
 
         // リスト詳細
         route('list/*', function(id){
-            window.obs.trigger("showMessage","list詳細がめーん (id = "+id)
+            var lis
+            that.data.lists.filter(function(list, index){
+                if(list.listID == id) {
+                    lis = list
+                    return true
+                }
+                    return true
+            })
+            window.obs.trigger("detailList",lis)
         })
 
         // リスト詳細
         route('info', function(){
             window.obs.trigger("showMessage","タスク管理システム by Steamjobs")
+        })
+
+        // リスト詳細
+        route('ajax', function(){
+            window.obs.trigger("ajaxtest")
         })
 
         // ホーム画面

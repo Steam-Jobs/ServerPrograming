@@ -4,8 +4,8 @@ require('../tags/task.tag')
     <div class="list-header">
         <h2>{ listName }</h2>
         <span class="right">
-            <span class="list-button" onclick="{ addTask }"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
-            <span class="list-button" onclick="{ detailList }"><i class="fa fa-fw fa-cog" aria-hidden="true"></i></span>
+            <span class="list-button" onclick={ addTask }><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
+            <span class="list-button" onclick={ detailList }><i class="fa fa-fw fa-cog" aria-hidden="true"></i></span>
         </span>
     </div>
     <div class="list-tasks">
@@ -34,7 +34,7 @@ require('../tags/task.tag')
         }
 
         addTask(){ route("/list/"+this.listID+"/addtask") }
-        detailList(){ route("/list/"+this.listID+"/addtask") }
+        detailList(){ route("/list/"+this.listID) }
 
     </script>
 
