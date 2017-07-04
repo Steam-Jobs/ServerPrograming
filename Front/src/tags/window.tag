@@ -1,8 +1,8 @@
 require('../tags/windows/ajaxtest.tag')
+require('../tags/windows/detailList.tag')
 require('../tags/windows/detailTask.tag')
 require('../tags/windows/message.tag')
 require('../tags/login.tag')
-
 
 <window>
     <!--<div class="overlay" if={ current != "" } onclick="{ closeWindow }">-->

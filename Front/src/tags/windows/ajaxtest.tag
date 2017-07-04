@@ -4,12 +4,10 @@
             <span onclick={ closeWindow }><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></span>
         </div>
         <div class="window-detail">
-            <form name="fm">
                 <label>名前：
-                <input type="text" name="name" size="15" onkeyup={ edit }/></label>
-                <input type="password" name="pass" size="15" onkeyup={ edit }/></label>
-                <button name="submit" value="送信" onclick = { asyncSend }/>
-            </form>
+                <input type="text" name="name" size="15" onkeyup={ edit }/>
+                <input type="password" name="pass" size="15" onkeyup={ edit }/>
+                <button name="submit" onclick={ postID }>送信</button>
             <div id="result">{ text }</div>
         </div>
 
@@ -54,13 +52,16 @@
             window.obs.trigger("hiddenWindow")
         }
 
-        asyncSend(){
+        postID(){
+            console.log("asyncSend")
             req.open('POST', 'http://150.95.149.0/api/sp/Login', true)
             req.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8')
             req.send('userID=' + that.name + 'pass=' + that.pass)
             // レスポンスとしてjsonを受け取る
             text = eval('(' + req.responseText + ')')
         }
+
+
     </script>
 
     <style type="less">

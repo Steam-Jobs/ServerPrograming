@@ -1,5 +1,4 @@
 import '../tags/app.tag'
-import '../tags/app.tag'
 var data = {
     data: {
         userID: '1',

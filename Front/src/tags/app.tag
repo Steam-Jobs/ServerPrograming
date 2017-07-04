@@ -54,7 +54,7 @@ require('../tags/main-contents.tag')
                     lis = list
                     return true
                 }
-                    return true
+                return true
             })
             window.obs.trigger("detailList",lis)
         })
