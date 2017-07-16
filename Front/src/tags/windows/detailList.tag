@@ -1,15 +1,15 @@
 <detailList>
     <div class="window">
         <div class="window-header">
-            <label class="edit-title" onclick={ editText }>{ opts.list.listName }</label>
-            <textarea class="edit-title" onblur={ editedText } hidden>{ opts.list.listName }</textarea>
+            <label class="edit-title" onclick={ editText }>{ opts.list.taskListName }</label>
+            <input class="edit-title" onblur={ editedText } value={ opts.list.taskListName } hidden>
             <a href="/"><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></a>
         </div>
         <div class="window-detail">
             <label class="split">ソート</label>
             <div class="items">
                 <span class="checkbox">
-                <select ref="input" value="0">
+                <select ref="input" value={ opts.list.sortRule }>
                     <option value="0">ソートしない</option>
                     <option value="1">優先度昇順</option>
                     <option value="2">優先度降順</option>
@@ -23,19 +23,19 @@
                     <option value="10">進捗度降順</option>
                 </select>
                 </span>
-                <span class="checkbox"><input type="checkbox" value=""/><label onclick={ labelClicked }>リストの自動化</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>リストの自動化</label></span>
             </div>
             <div class="items">
                 <label class="split">表示関連</label>
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>開始日時が***日以内</label></span>
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>締め切り日時が***日以内</label></span>
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>締め切り後満了していない</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox"  checked={ opts.list.dispByStart < 0 }/><label>開始日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByStart } disabled={ !opts.list.dispByStart < 0}/>日以内</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.dispByDead < 0 }/><label>締め切り日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByDead } disabled={ !opts.list.dispByDead < 0}/>日以内</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.dispByFinished }/><label>締め切り後満了していない</label></span>
             </div>
                 <label class="split">非表示</label>
             <div class="items">
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>進捗が満了</label></span>
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>締め切り日時を超過</label></span>
-                <span class="checkbox"><input type="checkbox" value={ x }/><label>締切がなく開始日を超過</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByFinished }/><label>進捗が満了</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByDead }/><label>締め切り日時を超過</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByList }/><label>締切がなく開始日を超過</label></span>
             </div>
                 <label class="split">次のリストにあるものを表示</label>
                 <select ref="input" size="2" value={ opts.list.listName } multiple>
@@ -51,31 +51,30 @@
     </div>
 
     <script>
+        console.log(opts)
+
         var x = true;
         var that=this;
         labelClicked(e)
         {
-            console.log(e)
             e.target.parentNode.firstElementChild.value = !e.target.parentNode.firstElementChild.value
         }
         editText(e){
-            console.log(e)
             e.target.hidden = true
             e.target.nextElementSibling.hidden=false
             e.target.nextElementSibling.focus()
         }
         editedText(e){
-            console.log(e)
+            opts.list.taskListName = e.target.value
             e.target.hidden = true
             e.target.previousElementSibling.hidden=false
-            that.update()
         }
     </script>
 
     <style type="less">
         .window {
             width: 300px;
-            height: 600px;
+            height: 580px;
             margin:80px auto 0;
             padding:0 10px;
             background: rgba(255, 255, 255, 0.9);
@@ -123,10 +122,9 @@
                 height: 2em;
                 line-height: 2em;
                 label{
-                    float:left;
                     width:auto;
                 }
-                input{
+                .chkbox{
                     float:left;
                     width:auto;
                     margin:.75em .5em 0;
@@ -134,7 +132,13 @@
                 select{
                     margin-top:.5em;
                 }
-
+                .numinput{
+                    height: 1.5em;
+                    width:3.5em;
+                    float:none;
+                    padding:0;
+                    padding-left: .5em;
+                }
             }
             .split{
                 height: auto;
@@ -152,12 +156,6 @@
                 margin-left: 10px;
                 background-color: rgba(2, 106, 167,1);
                 border-radius: 3px;
-            }
-            button{
-                float: left;
-                border: none;
-                outline: none;
-                appearance: none;
                 color: #e8e8e8;
                 padding: 10px 20px;
                 &:hover{

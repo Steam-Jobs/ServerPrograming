@@ -43,14 +43,14 @@ require('../tags/main-contents.tag')
 
         // リストにタスク追加
         route('list/*/addtask', function(id){
-            window.obs.trigger("showMessage","task追加がめん (id = "+id)
+            window.obs.trigger("showTask")
         })
 
         // リスト詳細
         route('list/*', function(id){
             var lis
             that.data.lists.filter(function(list, index){
-                if(list.listID == id) {
+                if(list.taskListID == id) {
                     lis = list
                     return true
                 }

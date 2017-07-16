@@ -2,9 +2,8 @@ require('../tags/task.tag')
 
 <list>
     <div class="list-header">
-        <h2>{ listName }</h2>
+        <h2>{ taskListName }</h2>
         <span class="right">
-            <span class="list-button" onclick={ addTask }><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
             <span class="list-button" onclick={ detailList }><i class="fa fa-fw fa-cog" aria-hidden="true"></i></span>
         </span>
     </div>
@@ -12,10 +11,7 @@ require('../tags/task.tag')
         <task each={ tasks }></task>
     </div>
     <div class="list-bottom">
-        <form class="pure-form" onsubmit={ add }>
-            <input ref="input" onkeyup={ edit }>
-            <button disabled={ !text } class="pure-button pure-button-primary">Add</button>
-        </form>
+        <span class="list-button" onclick={ addTask }><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
     </div>
 
     <script>
@@ -33,8 +29,8 @@ require('../tags/task.tag')
             }
         }
 
-        addTask(){ route("/list/"+this.listID+"/addtask") }
-        detailList(){ route("/list/"+this.listID) }
+        addTask(){ route("/list/"+this.taskListID+"/addtask") }
+        detailList(){ route("/list/"+this.taskListID) }
 
     </script>
 
