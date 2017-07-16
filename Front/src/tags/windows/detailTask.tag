@@ -27,7 +27,7 @@
     <script>
         edit(e)
         {
-            this.text = e.target.value
+            // this.text = e.target.value
         }
     </script>
 
@@ -42,6 +42,7 @@
         }
         .window-header{
             height: 2em;
+            float: right;
         }
         .window-detail{
             label{

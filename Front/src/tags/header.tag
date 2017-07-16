@@ -2,7 +2,7 @@
 
     <div class="header pure-g">
         <div class="pure-u-1-3">
-            <a href="#" class="pure-menu-heading header-left header-button header-padding"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a>
+            <a href="/ajax" class="pure-menu-heading header-left header-button header-padding"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a>
         </div>
         <div class="pure-u-1-3">
             <a href="#" class="pure-menu-heading header-title">タスク管理しすてむ🙌🙌🙌</a>

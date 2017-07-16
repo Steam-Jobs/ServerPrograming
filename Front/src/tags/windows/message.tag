@@ -32,6 +32,8 @@
             border-radius: 5px;
         }
         .window-header{
+            height: 2em;
+            float: right;
         }
         .window-detail{
             text-align: center;
