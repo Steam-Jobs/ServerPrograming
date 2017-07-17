@@ -7,17 +7,26 @@
         </div>
         <div class="window-detail">
             <div class="detail-l">
-                <label class="split">タスクコメント</label>
-                <textarea ref="input" onkeyup={ edit }>{ opts.task.comment }</textarea>
-                <label class="split">タスク詳細</label>
-                <textarea ref="input" class="comment" onkeyup={ edit }>{ opts.task.description }</textarea>
+                <div class="items">
+                    <label class="split">タスクコメント</label>
+                    <textarea ref="input" onkeyup={ edit }>{ opts.task.comment }</textarea>
+                </div>
+                <div class="items">
+                    <label class="split">タスク詳細</label>
+                    <textarea ref="input" class="comment" onkeyup={ edit }>{ opts.task.description }</textarea>
+                </div>
             </div>
             <div class="detail-r">
                 <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>進捗度</label></span>
-                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>開始日時</label></span>
-                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>締め切り日時</label></span>
-                <button class="wbtn" hidden={ !opts.task }>削除</button>
-                <button class="wbtn">{ opts.task ? "更新":"作成" }</button>
+                <div class="radioitems">
+                    <span class="checkbox"><input type="radio" class="chkbox" name="num" value="-1"/><label>100%表示</label></span>
+                    <span class="checkbox"><input type="radio" class="chkbox" name="num" value=""/><label>分母を設定</label><input type="number" class="numinput" min="0" /></span>
+                </div>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>開始日時</label><input type="date" class="numinput"/></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.auto }/><label onclick={ labelClicked }>締め切り日時</label><input type="date" class="numinput"/></span>
+
+                <button class="wbtn" onclick={ removeTask } hidden={ !opts.task } >削除</button>
+                <button class="wbtn" onclick={ updateTask }>{ opts.task ? "更新":"作成" }</button>
             </div>
         </div>
     </div>
@@ -36,6 +45,12 @@
             opts.list.taskListName = e.target.value
             e.target.hidden = true
             e.target.previousElementSibling.hidden=false
+        }
+        removeTask(){
+            data.lists.tasks.push()
+        }
+        updateTask(){
+
         }
     </script>
 
@@ -91,7 +106,7 @@
             }
             textarea{
                 height:4em;
-                width:90%;
+                width:100%;
                 display: block;
                 max-width:  90%;
                 max-height: 14em;
@@ -101,6 +116,7 @@
             }
             .split{
                 height: auto;
+                width:100%;
                 line-height: 1.5em;
                 border-bottom:#174d7a solid 1px;
                 padding:0;
@@ -130,6 +146,23 @@
                     padding-left: .5em;
                 }
             }
+        .items{
+            float: left;
+            width: 100%;
+            padding-right: 10px;
+            margin-bottom:1em;
+        }
+        .radioitems{
+            float: left;
+            margin-left:1em;
+        }
+        .numinput{
+            height: 1.5em;
+            width:3.5em;
+            float:none;
+            padding:0;
+            padding-left: .5em;
+        }
         .wbtn{
             float:right;
             margin-left: 10px;

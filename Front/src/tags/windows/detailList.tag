@@ -1,7 +1,7 @@
 <detailList>
     <div class="window">
         <div class="window-header">
-            <label class="edit-title" onclick={ editText }>{ opts.list.taskListName }</label>
+            <label class="edit-title" onclick={ editText }>{ opts.list ? opts.list.taskListName : "リスト名を表示する" }</label>
             <input class="edit-title" onblur={ editedText } value={ opts.list.taskListName } hidden>
             <a href="/"><i class="fa fa-fw fa-times fa-2x" aria-hidden="true"></i></a>
         </div>
@@ -27,25 +27,28 @@
             </div>
             <div class="items">
                 <label class="split">表示関連</label>
-                <span class="checkbox"><input type="checkbox" class="chkbox"  checked={ opts.list.dispByStart < 0 }/><label>開始日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByStart } disabled={ !opts.list.dispByStart < 0}/>日以内</label></span>
-                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.dispByDead < 0 }/><label>締め切り日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByDead } disabled={ !opts.list.dispByDead < 0}/>日以内</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox"  checked={ opts.list.dispByStart < 1 }/><label>開始日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByStart } disabled={ !opts.list.dispByStart < 0}/>日以内</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.dispByDead < 1 }/><label>締め切り日時が<input type="number" class="numinput" min="0" value={ opts.list.dispByDead } disabled={ !opts.list.dispByDead < 0}/>日以内</label></span>
                 <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.dispByFinished }/><label>締め切り後満了していない</label></span>
             </div>
                 <label class="split">非表示</label>
             <div class="items">
                 <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByFinished }/><label>進捗が満了</label></span>
                 <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByDead }/><label>締め切り日時を超過</label></span>
-                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByList }/><label>締切がなく開始日を超過</label></span>
+                <span class="checkbox"><input type="checkbox" class="chkbox" checked={ opts.list.hidByStart }/><label>締切がなく開始日を超過</label></span>
             </div>
                 <label class="split">次のリストにあるものを表示</label>
                 <select ref="input" size="2" value={ opts.list.listName } multiple>
+                    <!--
+                    なしならnull
+                    -->
                     <option value="1">リスト1</option>
                     <option value="2">リスト2</option>
                     <option value="3">リスト3</option>
                 </select>
                 <label>リストカラー</label>
-                <button class="wbtn">削除</button>
-                <button class="wbtn">更新</button>
+                <button class="wbtn" hidden={ !opts.list }>削除</button>
+                <button class="wbtn">{ opts.list ? "更新":"作成" }</button>
         </div>
 
     </div>

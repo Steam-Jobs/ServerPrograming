@@ -10,7 +10,7 @@ require('../tags/list.tag')
     </div>
     <script>
 
-        addList(){ route("/list/addtask") }
+        addList(){ route("/list/add") }
 
     </script>
     <style type="less">

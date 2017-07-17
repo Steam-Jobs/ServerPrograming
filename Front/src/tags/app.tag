@@ -4,12 +4,17 @@ require('../tags/main-contents.tag')
 
 <app>
     <div class="surface">
-        <header></header>
-        <main-contents></main-contents>
+        <header if={ this.data }></header>
+        <main-contents if={ this.data }></main-contents>
     </div>
     <window></window>
 
     <script>
+        var asyncprog = this.mixin("asyncprog")
+        if(!this.data || this.data=="null"){
+            asyncprog.obs.trigger("ajax")
+        }
+
         var that = this
 
         // window(オーバーレイウィンドウ)を制御する変数
@@ -38,7 +43,7 @@ require('../tags/main-contents.tag')
 
         // リスト追加画面
         route('list/add', function(){
-            window.obs.trigger("showMessage","リスト追加がめーん")
+            window.obs.trigger("detailList")
         })
 
         // リストにタスク追加
@@ -67,6 +72,12 @@ require('../tags/main-contents.tag')
         // リスト詳細
         route('ajax', function(){
             window.obs.trigger("ajaxtest")
+        })
+
+        // ログイン詳細
+        route('login', function(){
+            route.stop()
+            route('login')
         })
 
         // ホーム画面

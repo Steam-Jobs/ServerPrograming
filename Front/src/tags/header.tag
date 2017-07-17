@@ -5,7 +5,7 @@
             <a href="/ajax" class="pure-menu-heading header-left header-button header-padding"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a>
         </div>
         <div class="pure-u-1-3">
-            <a href="#" class="pure-menu-heading header-title">タスク管理しすてむ🙌🙌🙌</a>
+            <a href="#" class="pure-menu-heading header-title">🙌🙌🙌進捗トレ郎🙌🙌🙌</a>
         </div>
         <div class="pure-u-1-3">
             <span onclick="" class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-bell-o" aria-hidden="true"></i></span>
