@@ -1,2 +1,3 @@
 import '../tags/login.tag'
-riot.mount('login')
+import '../tags/adduser.tag'
+riot.mount('adduser')

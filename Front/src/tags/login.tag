@@ -20,7 +20,6 @@
             height: auto;
             z-index: -100;
             background-size: cover;
-
         }
         img{
             position: fixed;

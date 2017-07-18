@@ -10,14 +10,26 @@
         <div class="pure-u-1-3">
             <span onclick="" class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-bell-o" aria-hidden="true"></i></span>
             <span onclick={ showInfo } class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-info" aria-hidden="true"></i></span>
-            <span onclick="" class="pure-menu-heading header-right header-button"><img class="avatar" src="http://gravatar.com/avatar/{ data.gravatar }?s=30"><span class="header-padding">{ data.userName }</span></span>
+            <span onclick={ showUser } class="pure-menu-heading header-right header-button"><img class="avatar" src="http://gravatar.com/avatar/{ data.gravatar }?s=30"><span class="header-padding">{ data.userName }</span></span>
+
             <span onclick="" class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
         </div>
     </div>
 
     <script>
+        var that = this
+        // menu(ポップアップウィンドウ)を制御する変数
+        var menu
+        this.on('mount',function () {
+            // mixinからwindowを取得
+            menu = that.mixin("menu")
+        })
 
         showInfo(){ route("info") }
+        showUser(){
+            console.log("aa")
+            menu.obs.trigger("usermenu")
+        }
 
     </script>
 

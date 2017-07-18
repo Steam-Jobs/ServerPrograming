@@ -5,7 +5,6 @@ require('../tags/windows/message.tag')
 require('../tags/login.tag')
 
 <window>
-    <!--<div class="overlay" if={ current != "" } onclick="{ closeWindow }">-->
     <div class="overlay" if={ current != "" } >
         <detailTask if={ current == "detailTask" } task={ task }></detailTask>
         <detailList if={ current == "detailList" } list={ list }></detailList>
@@ -13,6 +12,7 @@ require('../tags/login.tag')
         <ajaxtest if={ current == "ajaxtest" } onclick=""></ajaxtest>
         <login if={ current == "login" }></login>
     </div>
+
     <script>
         var that = this
 

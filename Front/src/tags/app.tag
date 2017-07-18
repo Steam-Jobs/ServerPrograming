@@ -8,17 +8,16 @@ require('../tags/main-contents.tag')
         <main-contents if={ this.data }></main-contents>
     </div>
     <window></window>
+    <pop></pop>
 
     <script>
-        var asyncprog = this.mixin("asyncprog")
-        if(!this.data || this.data=="null"){
-            asyncprog.obs.trigger("ajax")
-        }
 
         var that = this
 
         // window(オーバーレイウィンドウ)を制御する変数
         var window
+
+        console.log(that)
         this.on('mount',function () {
             // mixinからwindowを取得
             window = that.mixin("window")
