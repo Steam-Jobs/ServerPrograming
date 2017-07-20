@@ -3,7 +3,7 @@ require('../tags/list.tag')
 <main-contents>
     <div class="main-panel">
         <div class="lists">
-            <list each={ data.lists }></list>
+            <list each={ opts.data.lists }></list>
             <list-new><span class="list-button" onclick="{ addList }"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span></list-new>
         </div>
         <div class="sidemenu"></div>
@@ -18,8 +18,7 @@ require('../tags/list.tag')
             height: 100%;
             position: relative;
             padding-bottom:10px;
-            overflow-x: auto;
-            overflow-y: hidden;
+            overflow: scroll;
         .lists{
             position: absolute;
             top: 0;

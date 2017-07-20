@@ -1,0 +1,12 @@
+Options +FollowSymLinks
+RewriteEngine on
+# wwwなしURLに301リダイレクト
+RewriteCond %{HTTP_HOST} ^www.cappee\.net
+RewriteRule ^(.*)$ http://cappee.net/$1 [R=301,L]
+# indexファイルの場合/にリライト
+RewriteCond %{THE_REQUEST} ^.*/index.php
+RewriteRule ^(.*)index.php$ http://cappee.net/$1 [R=301,L]
+# html拡張子なしでもアクセス
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html

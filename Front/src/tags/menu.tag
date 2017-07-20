@@ -1,6 +1,6 @@
 require('../tags/menu/usermenu.tag')
 <menu>
-    <div class="overlay" if={ current != "" } >
+    <div class="overlay" id="outside" if={ current != "" } onclick={ closeWindow }>
         <usermenu if={ current == "usermenu" }></usermenu>
     </div>
     <script>
@@ -26,6 +26,12 @@ require('../tags/menu/usermenu.tag')
         }
         // オブジェクトを共有部分に登録
         riot.mixin("menu",OptsMixin)
+
+        closeWindow(e){
+            if(e.target.id == "outside" || e.target.parentNode.id == "outside")
+                that.current = ""
+            that.update()
+        }
 
     </script>
     <style type="less">

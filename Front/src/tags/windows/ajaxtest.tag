@@ -8,6 +8,7 @@
                 <input type="text" name="name" size="15" onkeyup={ edit }/>
                 <input type="password" name="pass" size="15" onkeyup={ edit }/>
                 <button name="submit" onclick={ postID }>送信</button>
+                <button name="submit" onclick={ postJSON }>JSONテストデータを送信</button>
             <div id="result">{ text }</div>
         </div>
 
@@ -17,6 +18,8 @@
         var that = this
 
         var name,pass,text
+
+        var data = {data:{"userName":"JSONTEST","userID":"userID","gravatar":"d07edfba8c14b0c50d041c7a9ef31528",lists:[{"auto":false,"taskListColor":0,"dispByColor":0,"dispByDead":0,"dispByProg":0, "dispByStart": -1,"dispUnFinished": false,"hidByDead": false,"hidByFinished": false,"hidByList": null,"hidByStart": 0,"taskListName": "未分類","sortRule": 0,"taskListID": 0,"tasks": [{"taskColor": 0,"comment": "comment1","creationDate": "Jul 15, 2017 9:19:24 PM","deadlineDate": null,"description": "test task1","taskName": "test1","priority": 2,"progressDenominator": 30,"progressNumerator": 10,"startDate": "May 18, 2017 12:00:00 PM","taskID": 1,"userID": "user"},{"taskColor": 0,"comment": "comment0","creationDate": "Jul 15, 2017 9:19:24 PM",  "deadlineDate": "May 18, 2017 12:00:00 PM","description": "test task0","taskName": "test0","priority": 2,"progressDenominator": 30,"progressNumerator": 10,"startDate": "May 18, 2017 12:00:00 PM","taskID": 0,"userID": "user"}]},{"auto": false,"taskListColor": 0,"dispByColor": 0,"dispByDead": 0,"dispByProg": 0,"dispByStart": 0,"dispUnFinished": false,"hidByDead": false,"hidByFinished": false,"hidByList": null,"hidByStart": 0,"taskListName": "終了","sortRule": 0,"taskListID": 1,"tasks": []}    ]            }        };
 
         // テキスト編集時の処理
         edit(e){
@@ -38,10 +41,10 @@
                     that.text = req.responseText
                     that.update()
                 }else{
-                    console.log("はいヤバいエラー→"+req.responseText)
+                    console.log("エラー｜→"+req.status)
                 }
             }else{
-                console.log("通信中")
+                console.log("送信中")
             }
         }
 
@@ -53,7 +56,7 @@
         })
 
         closeWindow(){
-            window.obs.trigger("hiddenWindow")
+            route('/')
         }
 
         postID(){
@@ -61,7 +64,15 @@
             req.open('POST', 'http://150.95.149.0/api/sp/Login', true)
             req.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8')
             req.send('userID=' + that.name + '&pass=' + that.pass)
-            console.log('userID=' + that.name + '&pass=' + that.pass)
+            // レスポンスとしてjsonを受け取る
+            text = req.responseText
+        }
+        postJSON(){
+            console.log("asyncSend(JSON)")
+            req.open('POST', 'http://150.95.149.0/api/sp/Update', true)
+            req.setRequestHeader('content-type','application/json;charset=UTF-8')
+            data={"data":{"userID":"id","userName":"name","gravatar":null,"lists":[{"taskListID":0,"taskListName":"未分類","tasks":[],"taskIDList":[],"sortRule":0,"taskListColor":0,"auto":false,"dispByStart":0,"dispByDead":0,"dispUnFinished":false,"dispByProg":0,"dispByColor":0,"hidByFinished":false,"hidByDead":false,"hidByStart":0,"hidByList":null},{"taskListID":1,"taskListName":"終了","tasks":[],"taskIDList":[],"sortRule":0,"taskListColor":0,"auto":false,"dispByStart":0,"dispByDead":0,"dispUnFinished":false,"dispByProg":0,"dispByColor":0,"hidByFinished":false,"hidByDead":false,"hidByStart":0,"hidByList":null}]}}
+            req.send(JSON.stringify(data))
             // レスポンスとしてjsonを受け取る
             text = req.responseText
         }

@@ -23,7 +23,7 @@ var data = {
                 "taskListID": 0,
                 "tasks": [
                     {
-                        "taskColor": 0,
+                        "taskColor": 1,
                         "comment": "comment1",
                         "creationDate": "Jul 15, 2017 9:19:24 PM",
                         "deadlineDate": null,
@@ -72,7 +72,6 @@ var data = {
 
     }
 };
+riot.mount('app',data)
 
-
-riot.mixin(data)
-riot.mount('app')
+//riot.mount('app')

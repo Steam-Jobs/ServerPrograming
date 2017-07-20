@@ -30,10 +30,10 @@ require('../tags/task.tag')
         }
 
         addTask(){ route("/list/"+this.taskListID+"/addtask") }
+
         detailList(){ route("/list/"+this.taskListID) }
 
     </script>
-
     <style type='less'>
         @import "../styles/colors";
         @import "../styles/font-awesome/font-awesome.less";
@@ -44,7 +44,6 @@ require('../tags/task.tag')
             vertical-align: top;
             padding: 0;
             margin: 10px 5px 0;
-            background: rgba(2, 106, 167, 0.12);
             border-radius: 7px;
             border: 1px solid rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 7px -1px rgba(0, 0, 0, 0.5);

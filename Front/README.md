@@ -1,5 +1,5 @@
-# Front
-Riot.jsとlessで書いたソースをwebpackでindex.jsにばーん<br>
+﻿# Front
+Riot.jsとlessで書いたソースをwebpackでindex.jsに圧縮<br>
 ## 初期設定
 [node.js](https://nodejs.org/ja/)をインストール後<br>
 Frontのルートで

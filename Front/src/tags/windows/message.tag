@@ -20,7 +20,7 @@
         })
 
         closeWindow(){
-            window.obs.trigger("hiddenWindow")
+            route("/")
         }
     </script>
 
@@ -37,7 +37,7 @@
         }
         .window-detail{
             text-align: center;
-            padding-bottom: 20px;
+            padding: 20px;
         }
     </style>
 </message>

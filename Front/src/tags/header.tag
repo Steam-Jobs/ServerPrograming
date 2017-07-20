@@ -5,19 +5,21 @@
             <a href="/ajax" class="pure-menu-heading header-left header-button header-padding"><i class="fa fa-fw fa-home" aria-hidden="true"></i>ホーム</a>
         </div>
         <div class="pure-u-1-3">
-            <a href="#" class="pure-menu-heading header-title">🙌🙌🙌進捗トレ郎🙌🙌🙌</a>
+            <a href="/" class="pure-menu-heading header-title">🙌🙌🙌進捗トレ郎🙌🙌🙌</a>
         </div>
         <div class="pure-u-1-3">
-            <span onclick="" class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-bell-o" aria-hidden="true"></i></span>
             <span onclick={ showInfo } class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-info" aria-hidden="true"></i></span>
-            <span onclick={ showUser } class="pure-menu-heading header-right header-button"><img class="avatar" src="http://gravatar.com/avatar/{ data.gravatar }?s=30"><span class="header-padding">{ data.userName }</span></span>
-
-            <span onclick="" class="pure-menu-heading header-right header-button header-padding"><i class="fa fa-fw fa-plus" aria-hidden="true"></i></span>
+            <span onclick={ showUser } class="pure-menu-heading header-right header-button"><img class="avatar" src="http://gravatar.com/avatar/{ opts.data.gravatar }?s=30"><span class="header-padding">{ opts.data.userName }</span></span>
+            <span onclick={ changeTheme } id="0" class="pure-menu-heading header-right header-padding themebtn theme0btn"></span>
+            <span onclick={ changeTheme } id="1" class="pure-menu-heading header-right header-padding themebtn theme1btn"></span>
+            <span onclick={ changeTheme } id="2" class="pure-menu-heading header-right header-padding themebtn theme2btn"></span>
         </div>
     </div>
 
     <script>
         var that = this
+        var app = this.parent
+
         // menu(ポップアップウィンドウ)を制御する変数
         var menu
         this.on('mount',function () {
@@ -27,8 +29,13 @@
 
         showInfo(){ route("info") }
         showUser(){
-            console.log("aa")
             menu.obs.trigger("usermenu")
+        }
+
+        changeTheme(e){
+            app.theme = !!e.target.id ? e.target.id : e.target.parentElement.id
+            console.log(!!e.target.id ? e.target.id : e.target.parentElement.id)
+            app.update()
         }
 
     </script>
@@ -87,6 +94,15 @@
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
         }
+        .themebtn{
+            width:30px;
+            height:30px;
+            padding:0;
+            border-radius:3px;
+            &:hover{
+                 background: linear-gradient(to bottom,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
+             }
+         }
     </style>
 
 </header>

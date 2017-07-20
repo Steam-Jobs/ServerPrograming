@@ -2,15 +2,17 @@ require('../tags/windows/ajaxtest.tag')
 require('../tags/windows/detailList.tag')
 require('../tags/windows/detailTask.tag')
 require('../tags/windows/message.tag')
+require('../tags/windows/profile.tag')
 require('../tags/login.tag')
 
 <window>
-    <div class="overlay" if={ current != "" } >
+    <div class="overlay fadeInDown" ref="overlay" id="outside" if={ current != "" } onclick={ closeWindow }>
         <detailTask if={ current == "detailTask" } task={ task }></detailTask>
         <detailList if={ current == "detailList" } list={ list }></detailList>
         <message if={ current == "message" } message={ message }></message>
         <ajaxtest if={ current == "ajaxtest" } onclick=""></ajaxtest>
         <login if={ current == "login" }></login>
+        <profile if={ current == "profile" }></profile>
     </div>
 
     <script>
@@ -47,13 +49,17 @@ require('../tags/login.tag')
                     that.current = "ajaxtest"
                     that.update()
                 })
+                this.obs.on('profile',function(){
+                    that.current = "profile"
+                    that.update()
+                })
             }
         }
         // オブジェクトを共有部分に登録
         riot.mixin("window",OptsMixin)
-
-        closeWindow(){
-            route("/")
+        closeWindow(e){
+            if(e.target.parentNode.id == "outside" || e.target.id == "outside")
+                route("/")
         }
 
     </script>
@@ -66,6 +72,7 @@ require('../tags/login.tag')
             position: fixed;
             top: 0;
             left: 0;
+            overflow:scroll;
             a{
                 cursor: default;
             }
